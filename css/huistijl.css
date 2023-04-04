@@ -1,0 +1,39 @@
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #FEFEFA ;
+}
+
+.achtergrondfoto{
+  background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+  height: 300px;
+  
+} 
+h1 {
+  color: #1034A6 ;
+  text-align: center;
+}
+
+.titeldiv {
+  background-color: #4B92DB;
+}
+
+.owl-carousel .item {
+  display: block;
+  width: 200px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.carousel-item > img {
+   max-height: 200px;
+}
+
+.carousel-width {
+  width: 300px;
+}
+
+.iframeopmaak {
+  width: 300px;
+  height: 300px;
+}
+
