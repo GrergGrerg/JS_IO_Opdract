@@ -28,34 +28,96 @@
                         <input type="text" class="form-control" placeholder="u911236" aria-label="gebruikersnaam" aria-describedby="basic-addon1">
                       </div>
                     <div class="col-12">
-                      <label for="inputAddress2" class="form-label">Address 2</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                      <label for="email" class="form-label">E-mailadres</label>
+                      <input type="email" class="form-control" id="email" placeholder="mail@example.be">
                     </div>
-                    <div class="col-md-6">
-                      <label for="inputCity" class="form-label">City</label>
-                      <input type="text" class="form-control" id="inputCity">
+                    <div class="col-12">
+                        <label for="wachtwoord1" class="form-label">Wachtwoord</label>
+                        <input type="password" class="form-control" id="wachtwoord1">
+                        <div class="small">Je wachtwoord moet minstens 8 tekens lang zijn</div>
+                    </div>
+                    <div class="col-12">
+                        <label for="wachtwoord2" class="form-label">Herhaal wachtwoord</label>
+                        <input type="password" class="form-control" id="wachtwoord2">
+                    </div>
+                    <div class="col-12">
+                        <label for="adres" class="form-label">Adres</label>
+                        <input type="text" class="form-control" id="adres" placeholder="Uw adres en huisnummer">
+                      </div>
+                    <div class="col-md-5">
+                        <label for="land" class="form-label">Land</label>
+                        <select id="land" class="form-select">
+                          <option selected>Kies een land</option>
+                          <option value="1">België</option>
+                          <option value="2">Nederland</option>
+                          <option value="3">Spanje</option>
+                          <option value="4">Frankrijk</option>
+                          <option value="5">Duitsland</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="inputState" class="form-label">State</label>
-                      <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                      <label for="provincie" class="form-label">Provincie</label>
+                      <select id="provincie" class="form-select">
+                        <option selected>Kies een provincie</option>
+                          <option value="1">Antwerpen</option>
+                          <option value="2">Limburg</option>
+                          <option value="3">Oost-Vlaandere</option>
+                          <option value="4">West-Vlaanderen</option>
+                          <option value="5">Vlaams Brabant</option>
                       </select>
                     </div>
-                    <div class="col-md-2">
-                      <label for="inputZip" class="form-label">Zip</label>
-                      <input type="text" class="form-control" id="inputZip">
+                    <div class="col-md-3">
+                      <label for="postcode" class="form-label">Postcode</label>
+                      <input type="text" class="form-control" id="postcode">
                     </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
+                    <div class="col-12 border-top border-bottom mt-5">
+                        <div class="row mt-3 mb-3">
+                            <div class="col-md-8">
+                                <h2>Hou me op de hoogte</h2>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="nieuwsbrief">
+                                    <label class="form-check-label" for="nieuwsbrief">
+                                      Inschrijven voor onze nieuwsbrief
+                                    </label>
+                                  </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="voorwaarden">
+                                    <label class="form-check-label" for="voorwaarden">
+                                      Ik ga akkoord met de algemene voorwaarden
+                                    </label>
+                                  </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h2>Betaling</h2>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="betaling" id="betaling1" checked>
+                                    <label class="form-check-label" for="betaling1">
+                                      Banking app
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="betaling" id="betaling2">
+                                    <label class="form-check-label" for="betaling2">
+                                      Overschrijving
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="betaling" id="betaling3">
+                                    <label class="form-check-label" for="betaling3">
+                                      Visa Card
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="betaling" id="betaling4">
+                                    <label class="form-check-label" for="betaling4">
+                                      Paypal
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Sign in</button>
+                    <div class="d-grid gap-2 mb-3">
+                      <button type="submit" class="btn btn-primary">Wave your magic wand</button>
                     </div>
                   </form>
             </div>
