@@ -28,6 +28,7 @@ betaling.style.display = "none";
 
 
 const validateForm = () => {
+    errorlijst.innerHTML = "";
     let errors = new Array();
     error.style.display = "block";
     
@@ -40,6 +41,25 @@ const validateForm = () => {
         }
         console.log(errors);
     };
+
+    const validateMail = emailadres => {
+        // https://www.w3resource.com/javascript/form/email-validation.php
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres))
+        {
+        return (true)
+        }
+        
+        return (false)
+    };
+
+    const validateWachtwoord = (password1, password2) => {
+        // 
+        if (password1==null || inputs[index].value=="" || inputs[index].value.length < 6) {
+            alert("Field is not 6 characters minimum!");
+            return false;
+        }
+    };
+
     checkEmptyField(voornaam.value, "Het veld voornaam is vereist.");
     checkEmptyField(naam.value, "Het veld naam is vereist.");
     checkEmptyField(gebruiker.value, "Het veld gebruikersnaam is vereist.");
@@ -47,15 +67,21 @@ const validateForm = () => {
     checkEmptyField(wachtwoord1.value, "Het veld wachtwoord is vereist.");
     checkEmptyField(wachtwoord2.value, "Het veld herhaal wachtwoord is vereist.");
     checkEmptyField(adres.value, "Adres is vereist.");
-    checkEmptyField(land.value, "Het veld land is vereist.");
+    checkEmptyField(land.value, "Land is vereist.");
     checkEmptyField(provincie.value, "Provincie is vereist.");
-    checkEmptyField(postcode.value, "Het veld postcode is vereist.");
+    checkEmptyField(postcode.value, "Postcode is vereist.");
+
+    
+    if (!validateMail(email.value)) {
+        errors.push("E-mailadres is niet correct.")
+    }
+
+
     for (let index = 0; index < errors.length; index++) {
         const element = errors[index];
         errorlijst.innerHTML += element;
     }
     console.log(errors);
-
     
 };
 
