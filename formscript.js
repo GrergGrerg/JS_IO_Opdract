@@ -53,10 +53,12 @@ const validateForm = () => {
     };
 
     const validateWachtwoord = (password1, password2) => {
-        // 
-        if (password1==null || inputs[index].value=="" || inputs[index].value.length < 6) {
-            alert("Field is not 6 characters minimum!");
-            return false;
+        // https://stackoverflow.com/questions/26430716/form-validation-in-javascript-minimum-characters
+        if (password1.length <= 7) {
+            errors.push("Wachtwoord moet langer dan 7 karakters zijn." + "<br>");
+        }
+        if (password1 != password2) {
+            errors.push("Je wachtwoorden komen niet overeen." + "<br>");
         }
     };
 
@@ -73,9 +75,10 @@ const validateForm = () => {
 
     
     if (!validateMail(email.value)) {
-        errors.push("E-mailadres is niet correct.")
+        errors.push("E-mailadres is niet correct." + "<br>")
     }
 
+    validateWachtwoord(wachtwoord1.value, wachtwoord2.value);
 
     for (let index = 0; index < errors.length; index++) {
         const element = errors[index];
