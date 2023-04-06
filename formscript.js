@@ -30,21 +30,35 @@ betaling.style.display = "none";
 const validateForm = () => {
     let errors = new Array();
     error.style.display = "block";
-    checkEmptyField(voornaam.textContent, "Het veld voornaam is vereist.");
+    
+    
+    const checkEmptyField = (veld, melding) => {
+        // https://www.w3schools.com/js/js_validation.asp
+        
+        if (veld == "" || veld == "Kies een land" || veld == "Kies een provincie") {
+            errors.push(melding + "<br>");
+        }
+        console.log(errors);
+    };
+    checkEmptyField(voornaam.value, "Het veld voornaam is vereist.");
+    checkEmptyField(naam.value, "Het veld naam is vereist.");
+    checkEmptyField(gebruiker.value, "Het veld gebruikersnaam is vereist.");
+    checkEmptyField(email.value, "Het veld email is vereist.");
+    checkEmptyField(wachtwoord1.value, "Het veld wachtwoord is vereist.");
+    checkEmptyField(wachtwoord2.value, "Het veld herhaal wachtwoord is vereist.");
+    checkEmptyField(adres.value, "Adres is vereist.");
+    checkEmptyField(land.value, "Het veld land is vereist.");
+    checkEmptyField(provincie.value, "Provincie is vereist.");
+    checkEmptyField(postcode.value, "Het veld postcode is vereist.");
+    for (let index = 0; index < errors.length; index++) {
+        const element = errors[index];
+        errorlijst.innerHTML += element;
+    }
     console.log(errors);
-    errors.forEach(element => {
-        errorlijst.textContent += element; 
-    });
+
     
 };
 
-const checkEmptyField = (veld, melding) => {
-    // https://www.w3schools.com/js/js_validation.asp
-    let x = veld;
-    if (x == "") {
-        errors.push(melding);
-        
-    }
-};
+
 
 button.addEventListener('click', validateForm, false);
