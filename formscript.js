@@ -44,11 +44,11 @@ const validateForm = () => {
 
     const validateMail = emailadres => {
         // https://www.w3resource.com/javascript/form/email-validation.php
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres))
+        if (/^[^.-]+([\.-]?\w+)*@^[0-9a-zA-Z]+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres))
         {
         return (true)
         }
-        
+        // /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres)
         return (false)
     };
 
@@ -61,6 +61,13 @@ const validateForm = () => {
             errors.push("Je wachtwoorden komen niet overeen." + "<br>");
         }
     };
+
+    const validatePayment = veld => {
+
+        
+    };
+
+    
 
     checkEmptyField(voornaam.value, "Het veld voornaam is vereist.");
     checkEmptyField(naam.value, "Het veld naam is vereist.");
