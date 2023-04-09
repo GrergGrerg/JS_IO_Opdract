@@ -15,10 +15,17 @@ const postcode = document.querySelector("#postcode");
 const nieuwsbrief = document.querySelector("#nieuwsbrief");
 const voorwaarden = document.querySelector("#voorwaarden");
 
+const keuze1 = document.querySelector("#betaling1");
+const keuze2 = document.querySelector("#betaling2");
+const keuze3 = document.querySelector("#betaling3");
+const keuze4 = document.querySelector("#betaling4");
+
+
 const error = document.querySelector("#rood");
 const errorlijst = document.querySelector("#foutmelding");
 const gelukt = document.querySelector("#groen");
 const betaling = document.querySelector("#blauw");
+const betalingtekst = document.querySelector("#betalingmelding");
 
 // Alerts verbergen
 error.style.display = "none";
@@ -39,7 +46,7 @@ const validateForm = () => {
         if (veld == "" || veld == "Kies een land" || veld == "Kies een provincie") {
             errors.push(melding + "<br>");
         }
-        console.log(errors);
+        
     };
 
     const validateMail = emailadres => {
@@ -63,8 +70,14 @@ const validateForm = () => {
     };
 
     const validatePayment = veld => {
-
+        // https://www.javatpoint.com/how-to-check-a-radio-button-using-javascript#:~:text=Check%20the%20radio%20button%20is,two%20DOM%20methods%20for%20this.&text=The%20input%20radio%20checked%20property,Use%20document.
         
+        if (veld.checked) {
+            betalingtekst.innerHTML = "Je betalingswijze is " + veld.value + ".";
+        }
+        
+        
+
     };
 
     
@@ -91,8 +104,12 @@ const validateForm = () => {
         const element = errors[index];
         errorlijst.innerHTML += element;
     }
-    console.log(errors);
     
+    betaling.style.display = "block";
+    validatePayment(keuze1);
+    validatePayment(keuze2);
+    validatePayment(keuze3);
+    validatePayment(keuze4);
 };
 
 
