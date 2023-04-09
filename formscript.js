@@ -51,6 +51,7 @@ const validateForm = () => {
 
     const validateMail = emailadres => {
         // https://www.w3resource.com/javascript/form/email-validation.php
+        console.log(emailadres);
         if (/^[^.-]+([\.-]?\w+)*@^[0-9a-zA-Z]+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres))
         {
         return (true)
@@ -61,7 +62,7 @@ const validateForm = () => {
 
     const validateWachtwoord = (password1, password2) => {
         // https://stackoverflow.com/questions/26430716/form-validation-in-javascript-minimum-characters
-        if (password1.length <= 7) {
+        if (password1.length <= 7 && password1 != "") {
             errors.push("Wachtwoord moet langer dan 7 karakters zijn." + "<br>");
         }
         if (password1 != password2) {
@@ -75,9 +76,14 @@ const validateForm = () => {
         if (veld.checked) {
             betalingtekst.innerHTML = "Je betalingswijze is " + veld.value + ".";
         }
-        
-        
+    };
 
+    const checkPC = veld => {
+        // https://stackoverflow.com/questions/26944613/javascript-form-validation-between-2-numbers
+        checkEmptyField(veld, "Postcode is vereist.");
+        if (veld != "" && veld < 1000 || veld > 9999) {
+            errors.push("De waarde van postcode moet tussen 1000 en 9999 liggen.");
+        }        
     };
 
     
@@ -91,14 +97,22 @@ const validateForm = () => {
     checkEmptyField(adres.value, "Adres is vereist.");
     checkEmptyField(land.value, "Land is vereist.");
     checkEmptyField(provincie.value, "Provincie is vereist.");
-    checkEmptyField(postcode.value, "Postcode is vereist.");
-
     
-    if (!validateMail(email.value)) {
-        errors.push("E-mailadres is niet correct." + "<br>")
+
+    if (email.value != "") {
+        if (!validateMail(email.value)) {
+            errors.push("E-mailadres is niet correct." + "<br>");
+        }
     }
+    
 
     validateWachtwoord(wachtwoord1.value, wachtwoord2.value);
+
+    checkPC(postcode.value);
+
+    if (!voorwaarden.checked) {
+        errors.push("Je moet de algemene voorwaarden accepteren.");
+    }
 
     for (let index = 0; index < errors.length; index++) {
         const element = errors[index];
