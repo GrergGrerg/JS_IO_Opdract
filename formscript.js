@@ -37,7 +37,7 @@ betaling.style.display = "none";
 const validateForm = () => {
     errorlijst.innerHTML = "";
     let errors = new Array();
-    error.style.display = "block";
+    
     
     
     const checkEmptyField = (veld, melding) => {
@@ -52,10 +52,11 @@ const validateForm = () => {
     const validateMail = emailadres => {
         // https://www.w3resource.com/javascript/form/email-validation.php
         console.log(emailadres);
-        if (/^[^.-]+([\.-]?\w+)*@^[0-9a-zA-Z]+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres))
+        if (/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(emailadres))
         {
         return (true)
         }
+        // /^[^.-]+([\.-]?\w+)*@^[0-9a-zA-Z]+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres)
         // /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailadres)
         return (false)
     };
@@ -80,7 +81,7 @@ const validateForm = () => {
 
     const checkPC = veld => {
         // https://stackoverflow.com/questions/26944613/javascript-form-validation-between-2-numbers
-        checkEmptyField(veld, "Postcode is vereist.");
+        checkEmptyField(veld, "Het veld postcode is vereist.");
         if (veld != "" && veld < 1000 || veld > 9999) {
             errors.push("De waarde van postcode moet tussen 1000 en 9999 liggen.");
         }        
@@ -94,6 +95,7 @@ const validateForm = () => {
     checkEmptyField(email.value, "Het veld email is vereist.");
     checkEmptyField(wachtwoord1.value, "Het veld wachtwoord is vereist.");
     checkEmptyField(wachtwoord2.value, "Het veld herhaal wachtwoord is vereist.");
+    validateWachtwoord(wachtwoord1.value, wachtwoord2.value);
     checkEmptyField(adres.value, "Adres is vereist.");
     checkEmptyField(land.value, "Land is vereist.");
     checkEmptyField(provincie.value, "Provincie is vereist.");
@@ -106,7 +108,7 @@ const validateForm = () => {
     }
     
 
-    validateWachtwoord(wachtwoord1.value, wachtwoord2.value);
+    
 
     checkPC(postcode.value);
 
@@ -114,16 +116,29 @@ const validateForm = () => {
         errors.push("Je moet de algemene voorwaarden accepteren.");
     }
 
-    for (let index = 0; index < errors.length; index++) {
-        const element = errors[index];
-        errorlijst.innerHTML += element;
+    if (errors != "") {
+        error.style.display = "block";
+        betaling.style.display = "none";
+        gelukt.style.display = "none";
+
+        for (let index = 0; index < errors.length; index++) {
+            const element = errors[index];
+            errorlijst.innerHTML += element;
+        }
+    } else {
+        error.style.display = "none";
+        betaling.style.display = "block";
+        validatePayment(keuze1);
+        validatePayment(keuze2);
+        validatePayment(keuze3);
+        validatePayment(keuze4);
+
+        gelukt.style.display = "block";
     }
+
     
-    betaling.style.display = "block";
-    validatePayment(keuze1);
-    validatePayment(keuze2);
-    validatePayment(keuze3);
-    validatePayment(keuze4);
+    
+    
 };
 
 
