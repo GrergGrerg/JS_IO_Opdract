@@ -38,8 +38,6 @@ const validateForm = () => {
     errorlijst.innerHTML = "";
     let errors = new Array();
     
-    
-    
     const checkEmptyField = (veld, melding) => {
         // https://www.w3schools.com/js/js_validation.asp
         
@@ -52,7 +50,7 @@ const validateForm = () => {
     const validateMail = emailadres => {
         // https://www.w3resource.com/javascript/form/email-validation.php
         console.log(emailadres);
-        if (/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(emailadres))
+        if (/^[^.-]*[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(emailadres))
         {
         return (true)
         }
